@@ -1,0 +1,23 @@
+$danger: #ff4136;
+$good: rgb(21, 255, 0);
+$normal:rgb(165, 165, 165);
+
+
+.form-validation {
+    background: rgba(255, 64, 54, 0.17);
+    color: $danger;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 3px 10px;
+    margin-top: -14px;
+    line-height: 12px;
+    margin-right: 1px;
+}
+
+.selected_button {
+    background: $good !important;
+}
+.unselected_button {
+    background: $normal;
+    padding: 0;
+}

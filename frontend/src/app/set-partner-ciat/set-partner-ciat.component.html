@@ -1,0 +1,127 @@
+<div class="container">
+    <div class="row justify-content-center align-items-center " style="height: 100vh;">
+        <h1>
+            Request a new institution or brand
+        </h1>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <p *ngIf="invalid_form" class="text-danger text-right">
+                You have not completed all the fields
+            </p>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        Please enter the institution as "Partner", the legal entity.
+                    </p>
+                    <p>
+                        The name of the institution should be in its official language.
+                        (e.g. For CIAT: Centro Internacional de Agricultura Tropical.)
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-8 text-right">
+                            <p>Is this institution a brand?</p>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <button class="btn unselected_button" [ngClass]="{'selected_button' : isBrand}"
+                                (click)="showHeadquarter(true, $event)">
+                                YES
+                            </button>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <button class="btn unselected_button" [ngClass]="{'selected_button' : !isBrand}"
+                                (click)="showHeadquarter(false, $event)">
+                                NO
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-mod-7">
+                </div>
+            </div>
+            <div class="row" *ngIf="isBrand">
+                <div class="col-md-12">
+                    <select class="form-control select-normal" formControlName="headquarter"
+                    [ngClass]="{ 'is-invalid': f.headquarter.errors && f.headquarter.touched }">
+                        <option [ngValue]="null">Select an option...</option>
+                        <option [ngValue]="partner" *ngFor="let partner of partners">
+                            {{partner?.name}}
+                        </option>
+                    </select>
+                    <p class="form-validation" *ngIf="f.headquarter.errors && f.headquarter.touched">h</p>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="acronym" aria-describedby="acronymHelp"
+                            placeholder="{{placeholderText.acronym}}" formControlName="acronym"
+                            [ngClass]="{ 'is-invalid': f.acronym.errors && f.acronym.touched }">
+                    </div>
+                    <p class="form-validation" *ngIf="f.acronym.errors && f.acronym.touched">h</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" aria-describedby="nameHelp"
+                            placeholder="{{placeholderText.name}}" formControlName="name"
+                            [ngClass]="{ 'is-invalid': f.name.errors && f.name.touched }">
+                    </div>
+                    <p class="form-validation" *ngIf="f.name.errors && f.name.touched">h</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="type" placeholder="{{placeholderText.type}}"
+                            formControlName="type" [ngClass]="{ 'is-invalid': f.type.errors && f.type.touched }">
+                    </div>
+                    <p class="form-validation" *ngIf="f.type.errors && f.type.touched">h</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="country" placeholder="{{placeholderText.country}}"
+                            formControlName="country"
+                            [ngClass]="{ 'is-invalid': f.country.errors && f.country.touched }">
+                    </div>
+                    <p class="form-validation" *ngIf="f.country.errors && f.country.touched">h</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="city" placeholder="{{placeholderText.city}}"
+                            formControlName="city" [ngClass]="{ 'is-invalid': f.city.errors && f.city.touched }">
+                    </div>
+                    <p class="form-validation" *ngIf="f.city.errors && f.city.touched">h</p>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="partnerUrl" aria-describedby="partnerUrlHelp"
+                            placeholder="{{placeholderText.partnerUrl}}" formControlName="partnerUrl"
+                            [ngClass]="{ 'is-invalid': f.partnerUrl.errors && f.partnerUrl.touched }">
+                    </div>
+                    <p class="form-validation" *ngIf="f.partnerUrl.errors && f.partnerUrl.touched">h</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary btn-block">Request Add New Partner</button>
+                    <p class="small mt-4 text-black-50"></p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-3 text-center">
+                    <button class="btn btn-primary" routerLink="/partners">
+                        Check Partners
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

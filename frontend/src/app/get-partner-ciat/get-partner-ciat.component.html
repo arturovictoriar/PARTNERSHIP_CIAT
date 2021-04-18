@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row justify-content-center align-items-center " style="height: 100vh;">
+        <h1>
+            Institution Requests
+        </h1>
+        <div class="col-md-12 table-wrapper-scroll-y my-custom-scrollbar">
+            <div class="table-responsive" id="no-more-tables">
+                <table class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Headquater</th>
+                            <th>Acronym</th>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let partner of partners">
+                            <td>
+                                {{partner.headquarter}}
+                            </td>
+                            <td>
+                                {{partner.acronym}}
+                            </td>
+                            <td>
+                                {{partner.name}}
+                            </td>
+                            <td>
+                                {{partner.city}}, {{partner.country}}
+                            </td>
+                            <td >
+                                <i (click)="removePartner(partner.id)"
+                                    class="fa fa-trash-o"
+                                    style="color:red; font-size:1.5rem;">
+                                </i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="col-md-5"></div>
+        <div class="col-md-5"></div>
+        <div class="col-md-2 text-center">
+            <button class="btn btn-primary" routerLink="">
+                Add institution
+            </button>
+        </div>
+        <div class="col-md-12"></div>
+    </div>
+</div>
