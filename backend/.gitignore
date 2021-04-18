@@ -1,0 +1,9 @@
+node_modules/
+
+dist/
+
+DEVELOPING.md
+
+Dockerfile
+
+README.md
