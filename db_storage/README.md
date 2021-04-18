@@ -1,0 +1,1 @@
+The db_storage folder is used like VOLUME to store the mongodb
