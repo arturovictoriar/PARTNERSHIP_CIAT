@@ -1,7 +1,15 @@
 $danger: #ff4136;
-$good: rgb(21, 255, 0);
-$normal:rgb(165, 165, 165);
+$good: #4CAF50;
+$normal: gray;
 
+.custom-button-primary {
+    background: $good;
+    color: white;
+}
+
+.custom-bold {
+    font-weight: bold;
+}
 
 .form-validation {
     background: rgba(255, 64, 54, 0.17);
@@ -14,10 +22,16 @@ $normal:rgb(165, 165, 165);
     margin-right: 1px;
 }
 
+.form-validation-select {
+    margin-top: 0px;
+}
+
 .selected_button {
     background: $good !important;
+    color: white;
 }
 .unselected_button {
     background: $normal;
     padding: 0;
+    color: white;
 }

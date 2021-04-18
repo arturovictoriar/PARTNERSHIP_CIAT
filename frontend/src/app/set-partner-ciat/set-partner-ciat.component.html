@@ -1,13 +1,11 @@
 <div class="container">
     <div class="row justify-content-center align-items-center " style="height: 100vh;">
-        <h1>
+        <h1 class="custom-bold">
             Request a new institution or brand
         </h1>
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-            <p *ngIf="invalid_form" class="text-danger text-right">
-                You have not completed all the fields
-            </p>
-            <div class="row">
+            <div class="row"
+                style="background:rgb(207, 207, 207); border-radius: 5px; padding: 0.5rem; margin-bottom: 1rem;">
                 <div class="col-md-12">
                     <p>
                         Please enter the institution as "Partner", the legal entity.
@@ -38,20 +36,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-mod-7">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-4">
+                    <p *ngIf="invalid_form" class="text-danger text-right">
+                        You have not completed all the fields
+                    </p>
                 </div>
             </div>
             <div class="row" *ngIf="isBrand">
-                <div class="col-md-12">
-                    <select class="form-control select-normal" formControlName="headquarter"
-                    [ngClass]="{ 'is-invalid': f.headquarter.errors && f.headquarter.touched }">
-                        <option [ngValue]="null">Select an option...</option>
-                        <option [ngValue]="partner" *ngFor="let partner of partners">
-                            {{partner?.name}}
-                        </option>
-                    </select>
-                    <p class="form-validation" *ngIf="f.headquarter.errors && f.headquarter.touched">h</p>
-
+                <div class="col-md-12 mb-3">
+                    <div style="border-left: 5px solid #4CAF50; padding: 0 0 0 1rem;">
+                        <select class="form-control select-normal" formControlName="headquarter"
+                            [ngClass]="{ 'is-invalid': f.headquarter.errors && f.headquarter.touched }">
+                            <option [ngValue]="null" [disabled]="true">{{placeholderText.headquarter}}</option>
+                            <option [ngValue]="partner" *ngFor="let partner of partners">
+                                {{partner?.name}}
+                            </option>
+                        </select>
+                        <p class="form-validation form-validation-select" *ngIf="f.headquarter.errors && f.headquarter.touched">
+                            {{warningText.headquarter}}</p>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -61,7 +66,7 @@
                             placeholder="{{placeholderText.acronym}}" formControlName="acronym"
                             [ngClass]="{ 'is-invalid': f.acronym.errors && f.acronym.touched }">
                     </div>
-                    <p class="form-validation" *ngIf="f.acronym.errors && f.acronym.touched">h</p>
+                    <p class="form-validation" *ngIf="f.acronym.errors && f.acronym.touched">{{warningText.acronym}}</p>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
@@ -69,16 +74,19 @@
                             placeholder="{{placeholderText.name}}" formControlName="name"
                             [ngClass]="{ 'is-invalid': f.name.errors && f.name.touched }">
                     </div>
-                    <p class="form-validation" *ngIf="f.name.errors && f.name.touched">h</p>
+                    <p class="form-validation" *ngIf="f.name.errors && f.name.touched">{{warningText.name}}</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="type" placeholder="{{placeholderText.type}}"
-                            formControlName="type" [ngClass]="{ 'is-invalid': f.type.errors && f.type.touched }">
-                    </div>
-                    <p class="form-validation" *ngIf="f.type.errors && f.type.touched">h</p>
+                    <select class="form-control select-normal" formControlName="type"
+                        [ngClass]="{ 'is-invalid': f.type.errors && f.type.touched }">
+                            <option [ngValue]="null" [disabled]="true">{{placeholderText.type}}</option>
+                            <option [ngValue]="type" *ngFor="let type of typePartner">
+                                {{type}}
+                            </option>
+                        </select>
+                    <p class="form-validation form-validation-select" *ngIf="f.type.errors && f.type.touched">{{warningText.type}}</p>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
@@ -86,7 +94,7 @@
                             formControlName="country"
                             [ngClass]="{ 'is-invalid': f.country.errors && f.country.touched }">
                     </div>
-                    <p class="form-validation" *ngIf="f.country.errors && f.country.touched">h</p>
+                    <p class="form-validation" *ngIf="f.country.errors && f.country.touched">{{warningText.country}}</p>
                 </div>
             </div>
             <div class="row">
@@ -95,7 +103,7 @@
                         <input type="text" class="form-control" id="city" placeholder="{{placeholderText.city}}"
                             formControlName="city" [ngClass]="{ 'is-invalid': f.city.errors && f.city.touched }">
                     </div>
-                    <p class="form-validation" *ngIf="f.city.errors && f.city.touched">h</p>
+                    <p class="form-validation" *ngIf="f.city.errors && f.city.touched">{{warningText.city}}</p>
                 </div>
                 <div class="col-md-6"></div>
             </div>
@@ -106,18 +114,19 @@
                             placeholder="{{placeholderText.partnerUrl}}" formControlName="partnerUrl"
                             [ngClass]="{ 'is-invalid': f.partnerUrl.errors && f.partnerUrl.touched }">
                     </div>
-                    <p class="form-validation" *ngIf="f.partnerUrl.errors && f.partnerUrl.touched">h</p>
+                    <p class="form-validation" *ngIf="f.partnerUrl.errors && f.partnerUrl.touched">
+                        {{warningText.partnerUrl}}</p>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <button type="submit" class="btn btn-primary btn-block">Request Add New Partner</button>
+                    <button type="submit" class="btn custom-button-primary btn-block">Request Add New Partner</button>
                     <p class="small mt-4 text-black-50"></p>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-3 text-center">
-                    <button class="btn btn-primary" routerLink="/partners">
+                    <button class="btn custom-button-primary" (click)="cancelEvent($event)" routerLink="/partners">
                         Check Partners
                     </button>
                 </div>
