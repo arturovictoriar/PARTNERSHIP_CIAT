@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo
+    volumes:
+      - ./db_storage:/data/db
+    ports:
+      - "27017:27017"
+    container_name: db_ciat
+    networks:
+      - back_ciat
+
+  api:
+    build:
+      context: .
+      dockerfile: api.Dockerfile
+    ports:
+      - "5000:3000"
+    container_name: api_ciat
+    networks:
+      - back_ciat
+    depends_on:
+      - mongo
+
+networks:
+  back_ciat:
