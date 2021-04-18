@@ -23,5 +23,13 @@ services:
     depends_on:
       - mongo
 
+  front:
+    build:
+      context: .
+      dockerfile: front.Dockerfile
+    ports:
+      - "3000:80"
+    container_name: front_ciat
+
 networks:
   back_ciat:
