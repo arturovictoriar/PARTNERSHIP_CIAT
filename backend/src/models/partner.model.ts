@@ -4,7 +4,6 @@ import {Entity, model, property} from '@loopback/repository';
 export class Partner extends Entity {
   @property({
     type: 'string',
-    required: true,
   })
   acronym: string;
 
@@ -34,7 +33,6 @@ export class Partner extends Entity {
 
   @property({
     type: 'string',
-    required: true,
   })
   partner_url: string;
 
