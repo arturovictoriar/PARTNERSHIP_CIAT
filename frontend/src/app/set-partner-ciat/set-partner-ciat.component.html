@@ -37,6 +37,9 @@
                     </div>
                 </div>
                 <div class="col-md-3">
+                    <p *ngIf="invalid_name" class="text-danger text-right">
+                        Acronym or Name already exists
+                    </p>
                 </div>
                 <div class="col-md-4">
                     <p *ngIf="invalid_form" class="text-danger text-right">
