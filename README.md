@@ -54,7 +54,15 @@ foo@bar:~$ cd /PARTNERSHIP_CIAT
 foo@bar:~/PARTNERSHIP_CIAT$ docker-compose up
 ```
 
+## Running services :white_check_mark:
+
+- API --> host=localhost, port=5000 --> http://localhost:5000/
+- FRONTEND --> host=localhost, port=3000 --> http://localhost:3000/
+- MONGODB --> host=localhost, port=27017 --> http://localhost:27017/
+
 ## Usage :open_file_folder:
+
+0. Type http://localhost:3000/ in web browser you prefer
 
 1. Fill out all the field required
 
