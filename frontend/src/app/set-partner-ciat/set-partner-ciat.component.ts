@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import isoCountries from '../../assets/en.json';
 
 @Component({
   selector: 'app-set-partner-ciat',
@@ -39,7 +40,8 @@ export class SetPartnerCiatComponent implements OnInit {
     "Donor",
     "No-Governmental Organization",
     "Research Institution"
-  ]
+  ];
+  public countries3166 = isoCountries;
 
   constructor(
     private fb: FormBuilder,

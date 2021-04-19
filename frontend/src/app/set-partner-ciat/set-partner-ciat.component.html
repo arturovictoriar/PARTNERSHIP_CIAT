@@ -90,9 +90,13 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="country" placeholder="{{placeholderText.country}}"
-                            formControlName="country"
-                            [ngClass]="{ 'is-invalid': f.country.errors && f.country.touched }">
+                        <select class="form-control select-normal" formControlName="country"
+                        [ngClass]="{ 'is-invalid': f.country.errors && f.country.touched }">
+                            <option [ngValue]="null" [disabled]="true">{{placeholderText.country}}</option>
+                            <option [ngValue]="country.value.name" *ngFor="let country of countries3166 | keyvalue">
+                                {{country.value.name}}
+                            </option>
+                        </select>
                     </div>
                     <p class="form-validation" *ngIf="f.country.errors && f.country.touched">{{warningText.country}}</p>
                 </div>
